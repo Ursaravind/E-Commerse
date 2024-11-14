@@ -9,7 +9,7 @@ const Contact = () => {
     }
    
   return (
-    <>
+    <div className='contact'>
       <h1 className='text-center mt-12 font-bold mb-8 font-serif text-4xl text-gray-800'>
         Contact <span className='text-primary'>Us</span> <i className="ri-contacts-book-2-fill"></i>
       </h1>
@@ -67,7 +67,7 @@ const Contact = () => {
         </div>
       </div>
       <Footer/>
-    </>
+    </div>
   );
 };
 

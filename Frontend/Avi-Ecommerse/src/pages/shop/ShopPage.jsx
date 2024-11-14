@@ -75,10 +75,10 @@ const ShopPage = () => {
       
           </section>
           <section className='section__container'>
-            <div className='flex flex-col md:flex-row md:gap-8'>
-              <ShopFiltering filters={filters} filterdState ={filterdState} setFilterdState = {setFilterdState} clearFilters = {clearFilters}/>
+            <div className='filter flex flex-col  md:flex-row md:gap-8'>
+              <ShopFiltering  filters={filters} filterdState ={filterdState} setFilterdState = {setFilterdState} clearFilters = {clearFilters}/>
             <div>
-              <h1 className='text-xl font-bold'>Products <span className='text-primary'>Available</span>  :{products.length}</h1>
+              <h1 className='text-xl font-bold mt-16'>Products <span className='text-primary'>Available</span>  :{products.length}</h1>
               <ProductCards products={products} />
             </div>
             </div>

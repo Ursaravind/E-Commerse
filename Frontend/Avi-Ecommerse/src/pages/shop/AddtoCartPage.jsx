@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../../redux/feautures/cart/cartSlice';
 import { Link } from 'react-router-dom';
+import Footer from '../../copmponents/Footer';
 
 const AddtoCartPage = () => {
     const products = useSelector((state) => state.cart.products);
@@ -16,9 +17,9 @@ const AddtoCartPage = () => {
     };
 
     return (
-        <div className="p-4 sm:p-6">
+        <div className="p-4 sm:p-6 ">
             {/* Header Section */}
-            <section className="bg-gradient-to-l from-pink1 via-pink2 via-pink3 to-pink4 shadow-lg rounded-xl text-white p-4 mb-6">
+            <section className=" CartPage bg-gradient-to-l from-pink1 via-pink2 via-pink3 to-pink4 shadow-lg rounded-xl text-white p-4 mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-center">Your Cart <i className="ri-shopping-cart-2-fill"></i></h2>
             </section>
 
@@ -29,7 +30,7 @@ const AddtoCartPage = () => {
                     {products.map((item, index) => (
                         <div
                             key={index}
-                            className="flex flex-col md:flex-row items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4"
+                            className="flex flex-row md:flex-row items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4"
                         >
                             {/* Product Image */}
                             <span className='mr-3 font-bold rounded text-white bg-primary px-2'>{index+1}</span>
@@ -62,9 +63,13 @@ const AddtoCartPage = () => {
                       <Link to="/purchaseproduct">  <button className='btn mt-8 h-16 '>Proceed to Check out</button>
                       </Link>
                     </div>
+
                 </div>
             )}
+            <Footer/>
         </div>
+
+
     );
 };
 

@@ -3,31 +3,15 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AddtoCartPage from '../pages/shop/AddtoCartPage'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 const Navbar = () => {
     const products = useSelector((state)=>state.cart.products);
     const navigate = useNavigate();
-    const [isDropdownVisible, setDropdownVisible] = useState(false);
-
-    const handleLogout = ()=>{
-        localStorage.removeItem('token');
-        localStorage.removeItem("expirationTime")
-       toast.info("you have been logged out Successfully",{
-        position:"top-center",
-        autoClose:5000,
-       })
-          setTimeout(()=>{
-        navigate("/")
-        
-    },5000)
-
-}
+    
 const handleMouseClick = ()=>setDropdownVisible(true);
 
   return (
-    <header className='fixed-nav-bar w-nav bg-gray-100 shadow-xl'>
-        <nav className='max-w-screen-2xl mx-auto px-4 flex justify-between items-center'>
+    <header className='fixed-nav-bar w-nav  bg-gray-100 shadow-xl'>
+        <nav className='max-w-screen-2xl mx-auto px-1 flex justify-between items-center'>
             <ul className='nav__links'>
                 <li className='link bg-primary py-2 px-2 rounded-lg hover:bg-white transition duration-300  ' ><Link to="/"><span className='text-white hover:text-black'>Home</span></Link></li>
                 <li className='link bg-primary py-2 px-2 rounded-lg hover:bg-white transition duration-300  ' ><Link to="/pages"><span className='text-white hover:text-black'>Shop</span></Link></li>
@@ -57,10 +41,7 @@ const handleMouseClick = ()=>setDropdownVisible(true);
                       
                     
                     </Link>
-                  {
-                  isDropdownVisible && ( 
-                    <button  onClick = {handleLogout}className='ml-5 bg-primary px-3 text-white font-bold rounded-lg text-lg'>Logout</button>
-                 ) }
+                
                 
                 </span>
             </div> 

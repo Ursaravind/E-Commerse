@@ -3,7 +3,7 @@ import bannerImg from "../../assets/header.png"
 import { Link } from 'react-router-dom'
 const Banner = () => {
   return (
-    <div className='section__container header__container'>
+    <div className='section__container header__container '>
       <div className="header__content z-30 ">
         <h4 className='uppercase font-bold text-xl'>UP TO 20% Discount on</h4>
         <h1>Girl's Fashion</h1>

@@ -5,7 +5,7 @@ const Blogs = () => {
     console.log(blogsData)
   return (
     <section className='section__container blog__container '>
-        <h2 className='section__header ml-12 lg:ml-0'>Latest From Blog</h2>
+        <h2 className='section__header  lg:ml-0'>Latest From Blog</h2>
         <p className='text-center'>Elevate your wardrobe with our freshest style tips,trends,and inspiration on our blog</p>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9 mt-10'>
             {

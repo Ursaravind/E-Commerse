@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaMoneyBillAlt, FaCreditCard, FaWallet } from 'react-icons/fa';
 import { removeFromCart } from '../../redux/feautures/cart/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const PurchaseProduct = () => {
     const products = useSelector((state) => state.cart.products);
     const dispatch = useDispatch();
+    const [paymentMethod,setpaymentMethod] = useState("COD")
     
     const calculateTotal = () => {
         return products.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -14,14 +18,24 @@ const PurchaseProduct = () => {
     const handleRemove = (productId) => {
         dispatch(removeFromCart(productId));
     };
+    const handlePlaceOrder = ()=>{
+        toast.success("Order Placed Successfully 🎉",{
+            position:"top-center",
+            autoClose:"3000",
+            hideProgressBar:false,
+            closeOnClick : true,
+            pauseOnHover:true
+
+        })
+    }
 
 
     return (
-        <div className="max-w-xl mt-16 mx-auto p-5 bg-white shadow-lg rounded-lg">
+        <div className=" CartPage max-w-xl mt-16 mx-auto p-5  bg-white shadow-2xl shadow-black rounded-lg">
             <h2 className="text-2xl font-bold text-center mb-5">Purchase Product</h2>
 
             {products.length === 0 ? (
-                <div className="text-center font-semibold text-gray-500">Your Cart is Empty</div>
+                <div className="text-center font-semibold  text-gray-500 ">Your Cart is Empty</div>
             ) : (
                 <div>
                     {products.map((item, index) => (
@@ -30,7 +44,7 @@ const PurchaseProduct = () => {
                             className="flex flex-col md:flex-row items-center justify-between bg-gray-100 shadow-md rounded-lg p-4 mb-4"
                         >
                             {/* Product Image */}
-                            <span className='mr-3 font-bold rounded text-white bg-blue-500 px-2'>{index + 1}</span>
+                           
                             <img
                                 src={item.image}
                                 alt={item.name}
@@ -64,20 +78,26 @@ const PurchaseProduct = () => {
 
                 {/* Cash on Delivery (COD) Option */}
                 <div className="flex items-center my-2 p-2 border-b border-gray-300">
-                    <FaMoneyBillAlt className="text-xl mr-2 text-gray-700" />
+                   <input type="radio" className='mr-3 '   value="COD" name='paymentMethod' checked={paymentMethod=="COD"} onChange={(e)=>setpaymentMethod(e.target.value)} /> <FaMoneyBillAlt className="text-xl mr-2 text-gray-700" />
                     <span>Cash on Delivery (COD)</span>
                 </div>
 
                 {/* EMI Option */}
                 <div className="flex items-center my-2 p-2 border-b border-gray-300">
+                <input type="radio" className='mr-3 '   value="EMI" name='paymentMethod' checked={paymentMethod=="EMI"} onChange={(e)=>setpaymentMethod(e.target.value)} />
                     <FaWallet className="text-xl mr-2 text-gray-700" />
                     <span>EMI Available</span>
                 </div>
 
                 {/* Credit Card Option */}
                 <div className="flex items-center my-2 p-2">
+                <input type="radio" className='mr-3 '   value="Credit" name='paymentMethod' checked={paymentMethod=="Credit"} onChange={(e)=>setpaymentMethod(e.target.value)} />
                     <FaCreditCard className="text-xl mr-2 text-gray-700" />
+                    
                     <span>Credit Card</span>
+                </div>
+                <div>
+                    <button onClick={handlePlaceOrder} className='btn mt-5'>Place Order</button>
                 </div>
             </div>
         </div>

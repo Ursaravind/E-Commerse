@@ -15,6 +15,7 @@ const Categories = () => {
     <>
     <div className='product__grid'>
         {
+            
             categories.map((category,index)=>(
                 <Link key={index} className='shadow-lg shadow-black py-5 rounded-3xl transition-all  duration-500 hover:scale-110 ' to={`/categories/${category.path}`} >
                     <img className= ' w-2/3 ml-6 rounded-full ' src={category.image} alt={category.name} />
