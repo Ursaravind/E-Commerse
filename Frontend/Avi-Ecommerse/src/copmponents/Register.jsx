@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/register',{
+      const response = await axios.post('https://e-commerse-6per.onrender.com/register',{
         username,
         email,
         password,
