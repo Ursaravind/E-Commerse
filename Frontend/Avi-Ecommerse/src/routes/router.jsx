@@ -33,9 +33,9 @@ const router = createBrowserRouter([
                   {path:"/contact",element:<Contact/>},
                   {path:"/pages",element:<ShopPage/>},
                   {path:"/shop/:id",element:<SingleProduct/>},
-                  {path:"/cart",element:<ProtectedRoute element={<AddtoCartPage/>}/>},
+                  {path:"/cart",element:<AddtoCartPage/>},
                   {path:"/myprofile",element:<ProtectedRoute element={<MyProfile/>}/>},
-                  {path:"/purchaseproduct",element:<ProtectedRoute element={<PurchaseProduct/>}/>}
+                  {path:"/purchaseproduct",element:<PurchaseProduct/>}
 
       ]
     },
